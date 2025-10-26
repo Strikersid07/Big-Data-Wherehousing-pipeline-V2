@@ -58,3 +58,41 @@ Before running the automation:
   export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
   export HADOOP_HOME=$HOME/hadoop
   export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+  ## 🧰 Environment Configuration
+Add these environment variables and paths inside your **~/.bashrc** file:
+
+```bash
+# ===== Java Setup =====
+export JAVA_HOME=$HOME/.jenv/versions/17.0.15
+export PATH=$HOME/.jenv/bin:$PATH
+eval "$(jenv init -)"
+
+# ===== Hadoop & HDFS =====
+export HADOOP_HOME=$HOME/hadoop
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export HADOOP_USER_NAME=hive
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+export HADOOP_OPTS="--add-opens=java.base/java.lang=ALL-UNNAMED"
+
+# ===== Hive =====
+export HIVE_HOME=$HOME/apache-hive-4.0.0-bin
+export HIVE_CONF_DIR=$HIVE_HOME/conf
+export PATH=$PATH:$HIVE_HOME/bin
+export HIVE_AUX_JARS_PATH=$HOME/postgresql-42.7.3.jar
+
+# ===== Spark =====
+export SPARK_HOME=$HOME/spark
+export PATH=$PATH:$SPARK_HOME/bin:$SPARK_HOME/sbin
+export SPARK_CLASSPATH="$SPARK_HOME/jars/*:$HOME/hudi-spark3.3-bundle_2.12.jar"
+
+# ===== Ignite =====
+export IGNITE_HOME=$HOME/apache-ignite
+export PATH=$PATH:$IGNITE_HOME/bin
+
+# ===== NiFi =====
+export NIFI_HOME=$HOME/nifi
+export PATH=$PATH:$NIFI_HOME/bin
+
+# ===== Python/dbt =====
+export PYSPARK_PYTHON=$HOME/dbt_env/bin/python
+export PYSPARK_DRIVER_PYTHON=$HOME/dbt_env/bin/python
